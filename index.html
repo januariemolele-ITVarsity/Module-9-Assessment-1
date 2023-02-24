@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.00">
+        <title>Countdown Web App</title>
+        <link href="style.css" rel="stylesheet" type="text/css">
+    </head>
+    
+    <body>
+     <div class="container">
+         <img src="images/logo.png" class="logo">
+         
+         <div class="content">
+             <p>Website is Under Maintenance...</p><br/>
+             
+             <h1>We're <span>Launching</span> Soon!!</h1>
+             <div class="launch-time">
+                 <div>
+                     <p id="days">00</p><br/>
+                     <span>Days</span>
+                 </div>
+                 
+                 <div>
+                     <p id="hours">00</p><br/>
+                     <span>Hours</span>
+                 </div>
+                 
+                 <div>
+                     <p id="minutes">00</p><br/>
+                     <span>Minutes</span>
+                 </div>
+                 
+                 <div>
+                     <p id="seconds">00</p><br/>
+                     <span>Seconds</span>
+                 </div>
+             </div>
+             <button type="button">Learn More <img src="images/triangle.png"></button>
+         
+         </div>
+         <img src="images/rocket.png" class="rocket">
+        
+    </div>
+        
+    <script>
+        var countDownDate = new Date("May 31, 2023 00:00:00").getTime();
+        var timePeriod = setInterval(function(){
+            var now = new Date().getTime();
+            var timeSpan = countDownDate - now;
+            
+            var days = Math.floor(timeSpan / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeSpan % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeSpan % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeSpan % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+            
+            if(timeSpan < 0){
+                clearInterval(timePeriod);
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";    
+            }
+      
+        },1000);
+        
+    </script>
+           
+    </body>
+</html>
